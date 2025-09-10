@@ -9,10 +9,9 @@ import useCursorVisibility from "../../../../customCursor/hooks/useCursorVisibil
 import Card from './Card';
 import { cardOptions } from './options';
 import { isSet } from '../../../../customCursor/utils/common';
+import { pricingPage } from '../../../utils/data';
 // import CursorEffects from '../../../../src/settings/options/CursorEffects';
-const Playground = ({ dataInfo }) => {
-  const {  nonce } = dataInfo;
-
+const Playground = ({ nonce }) => {
   const { data, isLoading } = useWPAjax('csb_get_adv_scrollbar_cursor_data_settings', { nonce }); //authorize
   const [cursorData, setCursorData] = useState(null);
   const isCursorVisible = useCursorVisibility();
@@ -47,7 +46,7 @@ const Playground = ({ dataInfo }) => {
     ...(cursorData?.source == "shape" && { cursor: enableCursor? "auto" :"none" }),
     ...(cursorData?.source == "customUrl" && { cursor: `url(${cursorData?.shape?.customImg?.url}), pointer` }),
   }
-  // console.log(csbIsPremium)
+
   return <div className='custom-cursor-playground-container' >
     <h3 className='custom-cursor-title'>Playground</h3>
     <div className='custom-cursor-playground' ref={dashboardRef} style={cursorCssVar} >
@@ -58,7 +57,7 @@ const Playground = ({ dataInfo }) => {
 
           <div className='custom-cursor-playground-contents-button-wrapper'>
             <a href={`https://scrollbar.bplugins.com/`} target='_blank' rel="noreferrer" className='bPlDashboardPrimaryBtn'>See Demo</a>
-            <a href={`${baseLink}/#pricing`} target='_blank' rel="noreferrer" className='bPlDashboardSecondBtn'>Buy Now</a>
+            <a href={pricingPage} target='_blank' rel="noreferrer" className='bPlDashboardSecondBtn'>Buy Now</a>
           </div>
         </div>
 

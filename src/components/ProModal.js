@@ -1,10 +1,11 @@
 import { __ } from '@wordpress/i18n';
 import React from 'react';
 import { AboutProModal } from '../../../bpl-tools/ProControls';
+import { pricingPage } from '../admin/utils/data';
 
 const ProModal = ({ isProModalOpen, setIsProModalOpen }) => {
   return (
-    <AboutProModal isProModalOpen={isProModalOpen} setIsProModalOpen={setIsProModalOpen} link={"https://bplugins.com/products/advanced-scrollbar/#pricing"}>
+    <AboutProModal isProModalOpen={isProModalOpen} setIsProModalOpen={setIsProModalOpen} link={pricingPage}>
       <li>&emsp;<strong>{__('Select Cursor Source: ', 'advanced-scrollbar')}</strong>{__('Choose a predefined or custom cursor style from available options.', 'advanced-scrollbar')}</li>
 
       <li>&emsp;<strong>{__('Cursor Shape: ', 'advanced-scrollbar')}</strong>{__('Select from various styles to customize the cursor\'s appearance and movement behavior.', 'advanced-scrollbar')}</li>

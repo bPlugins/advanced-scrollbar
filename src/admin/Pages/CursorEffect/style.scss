@@ -8,6 +8,7 @@ $primaryColor: #146ef5;
   border: none;
   font-size: 16px;
   font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
   display: flex;
@@ -52,7 +53,6 @@ $primaryColor: #146ef5;
 }
 
 .custom-cursor-container {
-  width: 70%;
   margin: 0 auto;
   min-height: 600px;
   display: flex;

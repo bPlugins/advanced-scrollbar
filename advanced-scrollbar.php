@@ -3,7 +3,7 @@
  * Plugin Name: Advanced scrollbar
  * Author URI: http://bplugins.com
  * Description: Customize scrollbar of your website with unlimited styling and color using the plugin. 
- * Version: 1.1.5
+ * Version: 1.1.6
  * Author: bPlugins
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -19,7 +19,7 @@ if ( function_exists( 'asb_fs' ) ) {
     // asb_fs()->add_settings_page();
 } else {
     /* Latest jQuery of wordpress */
-        define('CSB_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.1.5' );
+        define('CSB_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.1.6' );
         define('CSB_DIR_URL', plugin_dir_url(__FILE__));
         define('CSB_DIR_PATH', plugin_dir_path(__FILE__));
         define('CSB_HAS_FREE', 'advanced-scrollbar/plugin.php' === plugin_basename(__FILE__));

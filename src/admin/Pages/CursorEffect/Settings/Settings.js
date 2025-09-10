@@ -15,8 +15,7 @@ import { shapeAndEffectOptions } from "../utils/options";
 import CursorImgShape from "./General/CursorImgShape";
 import { BControlPro } from "../../../../../../bpl-tools/ProControls";
 
-const Settings = ({ dataInfo, isProModalOpen, setIsProModalOpen,isPremium }) => {
-  const { dirUrl, nonce } = dataInfo;
+const Settings = ({ isProModalOpen, setIsProModalOpen,isPremium ,dirUrl, nonce }) => {
   const [csbAvScrData, setCsbAvScrData] = useState(null);
 
   // fetch token from bplugins server using ajax

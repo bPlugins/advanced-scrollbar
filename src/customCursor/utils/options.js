@@ -1,16 +1,16 @@
 import { __ } from '@wordpress/i18n';
 export const cursorStyleTabs = [
-  { name: 'shape', title: __('Cursor Shape', 'advanced-scrollbar') },
+  { name: 'shape', title: __('Cursor', 'advanced-scrollbar') },
   { name: 'effect', title: __('Click Effect', 'advanced-scrollbar') }
 ];
 
 export const cursorShapeTabs = [
-  { name: 'shape', title: __('Cursor Shape', 'advanced-scrollbar') },
+  { name: 'shape', title: __('Cursor', 'advanced-scrollbar') },
   { name: 'style', title: __('Shape Style', 'advanced-scrollbar') }
 ];
 
 export const cursorEffectTabs = [
-  { name: 'type', title: __('Effect Type', 'advanced-scrollbar') },
+  { name: 'type', title: __('Effect', 'advanced-scrollbar') },
   { name: 'style', title: __('Effect Style', 'advanced-scrollbar') }
 ];
 
@@ -18,8 +18,8 @@ export const cursorEffectTabs = [
 
 export const cursorSourceOptions =(isPremium)=> [
   { label: __('Cursor Only', 'advanced-scrollbar'), value: 'cursor', default: true },
-  { label: __('Cursor Shape', 'advanced-scrollbar'), value: 'shape' },
-  { label: __(`Pre Defined Image ${isPremium ? '' : '(Pro)'}`, 'advanced-scrollbar'), value: 'predefined' },
+  { label: __('Customizable Shape', 'advanced-scrollbar'), value: 'shape' },
+  { label: __(`Most Popular ${isPremium ? '' : '(Pro)'}`, 'advanced-scrollbar'), value: 'predefined' },
   { label: __(`Custom Url ${isPremium ? '' : '(Pro)'}`, 'advanced-scrollbar'), value: 'customUrl' },
 ]
 

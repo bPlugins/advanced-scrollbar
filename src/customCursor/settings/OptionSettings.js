@@ -12,7 +12,7 @@ import { BControlPro } from '../../../../bpl-tools/ProControls';
 const OptionSettings = (props) => {
   const { csbAvScrData, setCsbAvScrData, isPremium} = props;
   const [isProModalOpen, setIsProModalOpen] = useState(false)
-  
+
   return (
     <>
       <ProModal isProModalOpen={isProModalOpen} setIsProModalOpen={setIsProModalOpen} />

@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 import { __ } from '@wordpress/i18n';
-import { useState, useEffect } from "react";
-import Layout from "../Layout/Layout";
-import { loadingIcon } from '../utils/icons';
+import { useEffect, useState } from "react";
+import { loadingIcon } from '../../utils/icons';
 
-const PopularPlugin = ({ version, dataInfo }) => {
-    const { ajaxUrl,nonce } = dataInfo;
-    
+import './style.scss';
+import { Button } from '../../../../../bpl-tools/Components';
+const PopularPlugin = ({ ajaxUrl, nonce }) => {
+
     const [installedPlugins, setInstalledPlugins] = useState([]);
     const [pluginslug, setPluginslug] = useState(null);
     const [popularPlugins, setPopularPlugins] = useState([]);
@@ -79,16 +79,16 @@ const PopularPlugin = ({ version, dataInfo }) => {
     };
 
     return (
-        <Layout version={version}>
-            <div className="headerArea">
+        <div className='bPbPopularPluginWrapper'>
+            <div className="bPlheaderArea">
                 <h2>{__('Most Popular Plugin')}</h2>
                 <a className="action-button" href="https://profiles.wordpress.org/abuhayat/#content-plugins" target="_blank" rel="noopener noreferrer"> {__('Our All Plugins', 'slider')} </a>
             </div>
 
-            <div className="feature-section">
-                <div className="feature-container">
-                    <div className="popular-section">
-                        {!loading ? <div className="pluginArea">
+            <div className="bPlfeature-section">
+                <div className="bPlfeature-container">
+                    <div className="bPlpopular-section">
+                        {!loading ? <div className="bPlpluginArea">
                             {popularPlugins?.map((singlePlugin, index) => {
                                 const isInstalled = installedPlugins.some(
                                     (pluginSlug) => {
@@ -99,38 +99,39 @@ const PopularPlugin = ({ version, dataInfo }) => {
                                     }
                                 );
                                 return (
-                                    <div className="item" key={index}>
-                                        <div className="img"><img src={singlePlugin?.icons["1x"]} alt={singlePlugin?.slug} /></div>
-                                        <div className="title"><h3 dangerouslySetInnerHTML={{ __html: singlePlugin?.name }}></h3></div>
-                                        <div className="desc"><p>{singlePlugin?.short_description}</p></div>
-                                        <div className="btn_area">
-                                            <button className={` ${isInstalled ? 'installedSuccess' : 'action-button'}  ${pluginslug === singlePlugin?.slug ? "installing..." : ""}`}
+                                    <div className="bPlitem" key={index}>
+                                        <div className="bPlimg"><img src={singlePlugin?.icons["1x"]} alt={singlePlugin?.slug} /></div>
+                                        <div className="bPltitle"><h3 dangerouslySetInnerHTML={{ __html: singlePlugin?.name }}></h3></div>
+                                        <div className="bPldesc"><p>{singlePlugin?.short_description}</p></div>
+                                        <div className="bPlbtn_area">
+                                            <Button className={`outline ${isInstalled ? 'bPlinstalledSuccess' : 'bPlaction-button'}  ${pluginslug === singlePlugin?.slug ? "installing..." : ""}`}
                                                 onClick={(e) => {
                                                     e.preventDefault();
                                                     if (!isInstalled)
                                                         actionHooks(singlePlugin?.slug);
                                                 }}
                                                 disabled={isInstalled || pluginslug === singlePlugin?.slug}
+                                                size='medium'
                                             >
                                                 {pluginslug === singlePlugin?.slug
                                                     ? "Installing..."
                                                     : isInstalled
                                                         ? "Installed"
                                                         : "Install"}
-                                            </button>
-                                            <a className="action-button" href={singlePlugin?.download_link} target="_blank" rel="noopener noreferrer"> {__('Download', 'slider')} </a>
+                                            </Button>
+                                            <Button className="outline" href={singlePlugin?.download_link} target='_blank' rel='noopener noreferrer' size='medium'>Download</Button>
                                         </div>
                                     </div>
                                 );
                             })}
                         </div>
-                            : <div className="loading">
+                            : <div className="bPlloading">
                                 {loadingIcon}
                             </div>}
                     </div>
                 </div>
             </div>
-        </Layout>
+        </div>
     );
 };
 export default PopularPlugin;

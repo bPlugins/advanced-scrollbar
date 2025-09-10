@@ -40,20 +40,9 @@
   }
 
   .bPl-settings-pro-modal-upgrade-btn {
-    padding: 8px 14px;
-    border-radius: 6px;
-    background: #146ef5;
-    color: #fff;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    z-index: 1;
-    position: relative;
-    overflow: hidden;
+    max-width: fit-content;
+    text-decoration: none;
+    margin-inline: auto;
 
     &::before {
       content: "";

@@ -1,12 +1,12 @@
 import { __ } from '@wordpress/i18n';
 
 export const shapeAndEffectOptions = [
-  { name: 'shape', title: __('Cursor Shape', 'advanced-scrollbar') },
+  { name: 'shape', title: __('Cursor', 'advanced-scrollbar') },
   { name: 'effect', title: __('Click Effect', 'advanced-scrollbar') }
 ]
 
 export const shapeStyleTabs = [
-  { name: 'type', title: __('Shape Type', 'advanced-scrollbar') },
+  { name: 'type', title: __('Shape', 'advanced-scrollbar') },
   { name: 'style', title: __('Shape Style', 'advanced-scrollbar') }
 ]
 
