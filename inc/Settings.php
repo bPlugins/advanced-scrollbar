@@ -14,21 +14,19 @@ if( !class_exists('CSBScrollBarSettings') ){
 		function bPlSettingsOptions(){
 			$nonce = sanitize_text_field( $_POST['_wpnonce'] ?? null );
 			
-			$key = sanitize_text_field( $_POST['id'] ?? '' );
-			
 			if( !wp_verify_nonce( $nonce, "wp_rest" ) ){
 				wp_send_json_error( 'Invalid Request' );
 			}
 			
-			$js_data = json_decode( wp_kses_stripslashes( sanitize_text_field( $_POST[$key] ?? null ) ), true );
+			$js_data = json_decode( wp_kses_stripslashes( sanitize_text_field( $_POST['asb-advanced-scrollbar-thirds'] ?? null ) ), true );
 
-			$db_data = get_option($key, [] );
+			$db_data = get_option('asb-advanced-scrollbar-thirds', [] );
 			if( !$js_data && $db_data ){
 				wp_send_json_success($db_data);
 			}
 
 			if($js_data){
-				update_option( $key, $js_data );
+				update_option( 'asb-advanced-scrollbar-thirds', $js_data );
 			}
 
 			wp_send_json_success( $js_data );

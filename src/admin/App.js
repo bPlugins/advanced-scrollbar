@@ -28,9 +28,9 @@ const App = ({ settingOptions, ...props }) => {
 
           <Route path="/custom-cursor" element={<CursorEffect {...props} version={version} />} />
 
-          <Route path="/pricing" element={<Pricing {...props} pricingInfo={pricingInfo} >
+{!isPremium && <Route path="/pricing" element={<Pricing {...props} pricingInfo={pricingInfo} >
             <h1 className='csb-pricing-title'>One-time payment, lifetime access</h1>
-          </Pricing>} />
+          </Pricing>} />}
           
           <Route path="/popularPlugin" element={<PopularPlugin {...props} version={version} />} />
           {/* When no routes match, it will redirect to this route path. Note that it should be registered above. */}

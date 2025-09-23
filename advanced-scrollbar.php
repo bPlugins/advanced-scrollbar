@@ -3,7 +3,7 @@
  * Plugin Name: Advanced scrollbar
  * Author URI: http://bplugins.com
  * Description: Customize scrollbar of your website with unlimited styling and color using the plugin. 
- * Version: 1.1.6
+ * Version: 1.1.8
  * Author: bPlugins
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -18,19 +18,19 @@ if ( function_exists( 'asb_fs' ) ) {
     asb_fs()->set_basename( true, __FILE__ );
     // asb_fs()->add_settings_page();
 } else {
-    /* Latest jQuery of wordpress */
-        define('CSB_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.1.6' );
+
+        define('CSB_VERSION', isset( $_SERVER['HTTP_HOST'] ) && 'localhost' === $_SERVER['HTTP_HOST'] ? time() : '1.1.8' );
         define('CSB_DIR_URL', plugin_dir_url(__FILE__));
         define('CSB_DIR_PATH', plugin_dir_path(__FILE__));
         define('CSB_HAS_FREE', 'advanced-scrollbar/plugin.php' === plugin_basename(__FILE__));
         define('CSB_HAS_PRO', 'advanced-scrollbar-pro/plugin.php' === plugin_basename(__FILE__));
     if ( ! function_exists( 'asb_fs' ) ) {
-    // Create a helper function for easy SDK access.
+
     function asb_fs() {
         global $asb_fs;
 
         if ( ! isset( $asb_fs ) ) {
-            // Include Freemius SDK.
+
             require_once dirname(__FILE__) . '/freemius/start.php';
 
             $asb_fs = fs_dynamic_init( array(
@@ -39,7 +39,7 @@ if ( function_exists( 'asb_fs' ) ) {
                 'premium_slug'        => 'advanced-scrollbar-pro',
                 'type'                => 'plugin',
                 'public_key'          => 'pk_419d245dc8547a274d192990c096a',
-                'is_premium'          => true,
+                'is_premium'          => false,
                 'premium_suffix'      => 'Pro',
                 'has_premium_version' => true,
                 'has_addons'          => false,
@@ -62,9 +62,9 @@ if ( function_exists( 'asb_fs' ) ) {
         return $asb_fs;
     }
 
-    // Init Freemius.
+
     asb_fs();
-    // Signal that SDK was initiated.
+
     do_action( 'asb_fs_loaded' );
 }
 

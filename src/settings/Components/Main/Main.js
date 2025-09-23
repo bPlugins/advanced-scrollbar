@@ -175,7 +175,7 @@ const Main = ({ options, data, dbData, setData, onSaveData, isLoading, saveData,
           </div>}
           {
             search.length > 3 ?
-              <SearchBodyFields {...{ search, setSearch, options, sections, data, setData, isLoading, activeSection, activeChild,refetch,dbData }} updateData={searchFieldUpdateData} {...props} />
+              <SearchBodyFields {...{ search, setSearch, options, sections, data, setData, isLoading, activeSection, activeChild, refetch, dbData }} updateData={searchFieldUpdateData} {...props} />
               :
               <Body dbData={dbData} search={search} setSearch={setSearch} options={options} {...activeProps} updateData={updateData} sections={sections} data={data} setData={setData} isLoading={isLoading} refetch={refetch} {...props} />
           }

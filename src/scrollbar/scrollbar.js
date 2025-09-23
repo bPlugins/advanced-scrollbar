@@ -15,7 +15,7 @@ const Scrollbar = ({ scrollbarData }) => {
 
 
     const touchBehavior = asb_touchbehavior == 1 ? true : false;
-    const showScrollbar = typeof asb_showscrollbar =="string" ? JSON.parse(asb_showscrollbar) :false;
+    const showScrollbar = typeof asb_showscrollbar == "string" ? JSON.parse(asb_showscrollbar) : false;
     const autoHideMode = (asb_autohidemode === "cursor" || asb_autohidemode === "coursor") ? "cursor" : JSON.parse(asb_autohidemode);
 
     const isShowScrollBar = asb_dynamic_height_scrollbar == "off" && asb_floating_scrollbar == "off" && showScrollbar;
@@ -24,7 +24,6 @@ const Scrollbar = ({ scrollbarData }) => {
 
     useEffect(() => {
         if (isShowScrollBar) {
-
             $("html").niceScroll({
                 hwacceleration: true,
                 cursorcolor: asb_color,
@@ -35,11 +34,23 @@ const Scrollbar = ({ scrollbarData }) => {
                 railalign: asb_railalign,
                 background: asb_background,
                 touchbehavior: touchBehavior,
+                emulatetouch: touchBehavior,
                 grabcursorenabled: true,
                 mousescrollstep: asb_mousescrollstep,
                 autohidemode: autoHideMode,
             });
         }
+
+        if (touchBehavior && navigator.maxTouchPoints > 0) {
+            const el = document.querySelector('html');
+            if (!el) return;
+
+            el.style.overflowY = "auto";
+            el.style.webkitOverflowScrolling = "touch"; // iOS momentum scroll
+            el.style.touchAction = "auto"; // allow pan gestures
+            el.style.scrollbarWidth = "none";
+        }
+
 
         // Cleanup function
         return () => {
@@ -66,7 +77,7 @@ const Scrollbar = ({ scrollbarData }) => {
         autoHideMode
     ]);
 
-    useEffect(() => { 
+    useEffect(() => {
         const html = document.documentElement;
         if (asb_dynamic_height_scrollbar == "on" || asb_floating_scrollbar == "on") {
             html.classList.add('csb-scrollbar-active');
@@ -85,6 +96,7 @@ const Scrollbar = ({ scrollbarData }) => {
     }
 
     // if (isLoading ) return;
+
 
     return <>
         {
