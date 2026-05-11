@@ -18,7 +18,8 @@ module.exports = {
 		wp: 'readonly',
 		jQuery: 'readonly',
 		csbIsPremium: 'readonly',
-		csbAdvScrollbarCursorConfig: 'writable'
+		csbAdvScrollbarCursorConfig: 'writable',
+		isCsbScrollbarChecker: 'readonly',
 	},
 	parserOptions: {
 		ecmaFeatures: {

@@ -1,4 +1,10 @@
 <?php
+// ABS PATH
+if (!defined('ABSPATH')) {
+	exit;
+}
+
+
 if( !class_exists( 'CSBAdvScrollbarCursor' ) ){
 	class CSBAdvScrollbarCursor{
 		function __construct(){
@@ -6,8 +12,6 @@ if( !class_exists( 'CSBAdvScrollbarCursor' ) ){
 			add_action( 'the_content', [ $this, 'theContent' ] );
 			add_action("enqueue_block_assets",array( $this, 'enqueueBlockAssets'));
 			add_action("enqueue_block_editor_assets",array( $this, 'enqueueBlockEditorAssets' ));
-			add_action('wp_ajax_csbAdvScrollbarPremiumChecker', [$this, 'csbAdvScrollbarPremiumChecker']);
-			add_action('wp_ajax_nopriv_csbAdvScrollbarPremiumChecker', [$this, 'csbAdvScrollbarPremiumChecker']);
 			add_action('wp_ajax_csb_adv_scrollbar_cursor_data_settings', [$this, 'csb_adv_scrollbar_cursor_data_settings']);
 			add_action('wp_ajax_csb_get_adv_scrollbar_cursor_data_settings', [$this, 'csb_get_adv_scrollbar_cursor_data_settings']);
 			add_action('wp_ajax_nopriv_csb_get_adv_scrollbar_cursor_data_settings', [$this, 'csb_get_adv_scrollbar_cursor_data_settings']);
@@ -35,11 +39,14 @@ if( !class_exists( 'CSBAdvScrollbarCursor' ) ){
 
 		public function csb_adv_scrollbar_cursor_data_settings(){
 
-			if (!wp_verify_nonce(sanitize_text_field(isset($_POST['nonce']) ? stripcslashes($_POST['nonce']) : null), 'wp_rest')) {
-				wp_send_json_error('invalid request');
+			if ( !isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'adv_scrollbar_nc' ) ) {
+				wp_send_json_error( 'invalid request' );
 			}
-			
-			$data = json_decode(sanitize_text_field( stripcslashes($_POST['csbAvScrData'])), true);
+
+			if (!current_user_can( 'manage_options' ) ) {
+						wp_send_json_error( 'Unauthorized Access' );
+				}
+			$data = json_decode(sanitize_text_field( wp_unslash($_POST['csbAvScrData'])), true);
 
 			if(!$data){
 				$data = get_option('csb_adv_scrollbar_cursor_settings', []);
@@ -53,7 +60,7 @@ if( !class_exists( 'CSBAdvScrollbarCursor' ) ){
 		}
 
 		public function csb_get_adv_scrollbar_cursor_data_settings(){
-			if (!wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'wp_rest')) {
+			if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'adv_scrollbar_nc' ) ) {
 				wp_send_json_error('invalid request');
 			}
 
@@ -70,7 +77,7 @@ if( !class_exists( 'CSBAdvScrollbarCursor' ) ){
 
 			wp_localize_script( 'csb-adv-scrollbar-cursor', 'csbAdvScrollbarCursorConfig', array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
-				'nonce' => wp_create_nonce('wp_rest'),
+				'nonce' => wp_create_nonce('adv_scrollbar_nc'),
 				'dirUrl' => CSB_DIR_URL
 			));
 		}
@@ -81,19 +88,6 @@ if( !class_exists( 'CSBAdvScrollbarCursor' ) ){
 			wp_enqueue_style("csb-adv-scrollbar-cursor-settings", CSB_DIR_URL . '/build/settings.css', array(), CSB_VERSION);
 		}
 
-		function csbAdvScrollbarPremiumChecker(){
-			$nonce = sanitize_text_field($_POST['_wpnonce'] ?? null);
-			// wp_send_json_success( 'Invalid Request :' . wp_verify_nonce( $nonce, "wp_rest" ) );
-			if( wp_verify_nonce( $nonce, "wp_rest" ) != 1 ){
-				wp_send_json_error( 'Invalid Request' );
-			}
-
-			// wp_send_json_success( 'muradwahid :' . wp_verify_nonce( $nonce, "wp_rest" ) );
-			
-			wp_send_json_success([
-				'isPremium' => asbIsPremium()
-			]);
-		}
 	}
 	new CSBAdvScrollbarCursor();	
 }

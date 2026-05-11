@@ -4,7 +4,7 @@ import { useWPAjax } from "../../../../../../bpl-tools/hooks";
 
 import CursorEffects from '../../../../customCursor/cursor/Effects/CursorEffects';
 import Cursor from '../../../../customCursor/cursor/Shape/Cursor';
-import CursorRibbon from '../../../../customCursor/cursor/Shape/CursorRibbon/CursorRibbon';
+// import CursorRibbon from '../../../../customCursor/cursor/Shape/CursorRibbon/CursorRibbon';
 import useCursorVisibility from "../../../../customCursor/hooks/useCursorVisibility";
 import Card from './Card';
 import { cardOptions } from './options';
@@ -69,7 +69,7 @@ const Playground = ({ nonce }) => {
       {/* <button style={{height:"50px",width:"100px",marginInline:"auto"}}>Hover me</button> */}
       { 
         cursorData?.source == "shape" && <>
-        {(cursorData?.shape?.type === 'ribbon' && isCursorVisible) && <CursorRibbon {...cursorData?.shape?.ribbon} domEl={dashboardRef.current} eventEl={dashboardRef.current} rect={dashboardRef.current.getBoundingClientRect()} key={cursorData?.shape?.type} />}
+        {/* {(cursorData?.shape?.type === 'ribbon' && isCursorVisible) && <CursorRibbon {...cursorData?.shape?.ribbon} domEl={dashboardRef.current} eventEl={dashboardRef.current} rect={dashboardRef.current.getBoundingClientRect()} key={cursorData?.shape?.type} />} */}
   
         {(cursorData?.shape?.type && cursorData?.shape?.type !== 'ribbon' && isCursorVisible) ? <Cursor shape={cursorData?.shape} domEl={dashboardRef.current} eventEl={dashboardRef.current} rect={dashboardRef.current.getBoundingClientRect()} key={cursorData?.shape?.type} isDashboard={true} /> : null}
         </>

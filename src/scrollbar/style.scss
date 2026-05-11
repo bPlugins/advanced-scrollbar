@@ -116,3 +116,15 @@ html.csb-scrollbar-active::-webkit-scrollbar {
 	left: 0;
 	z-index: 9999;
 }
+
+@media (prefers-reduced-motion:no-preference) {
+    html.csb-advanced-scrollbar {
+        scroll-behavior: unset !important;
+				body{
+					scroll-behavior: unset !important;
+				}
+				:root{
+					scroll-behavior: unset !important;
+				}
+    }
+}

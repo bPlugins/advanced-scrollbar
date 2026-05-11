@@ -1,4 +1,3 @@
-import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import "./style.scss";
 
@@ -8,33 +7,38 @@ export default function BlobCursor({
   blobType = "circle",
   fillColor = "#00f0ff",
   blobSize = 125,
-  domEl = null, eventEl = window, rect = { left: 0, top: 0 },
-  isDashboard= false
+  domEl = null,
+  eventEl = typeof window !== "undefined" ? window : null,
+  rect = { left: 0, top: 0 },
+  isDashboard = false,
 }) {
   const trailRefs = [useRef(null), useRef(null), useRef(null)];
+
   const pos = useRef({ x: 0, y: 0 });
 
-  const trailPos = [
-    useRef({ x: 0, y: 0 }),
-    useRef({ x: 0, y: 0 }),
-    useRef({ x: 0, y: 0 }),
-  ];
+  const trailPos = useRef([
+    { x: 0, y: 0 },
+    { x: 0, y: 0 },
+    { x: 0, y: 0 },
+  ]);
 
-  // Calculate blob sizes
   const blobSizes = [
     Math.round(blobSize * 0.4),
     blobSize,
     Math.round(blobSize * 0.6),
   ];
 
-  // Use rect for relative positioning
+  const eases = [0.25, 0.15, 0.08];
+
   const handleMove = (e) => {
     let x = e.clientX || (e.touches && e.touches[0].clientX);
     let y = e.clientY || (e.touches && e.touches[0].clientY);
-    if (rect.left && rect.top) {
+
+    if (rect && typeof rect.left === "number" && typeof rect.top === "number") {
       x = x - rect.left;
       y = y - rect.top;
     }
+
     pos.current = { x, y };
   };
 
@@ -49,40 +53,31 @@ export default function BlobCursor({
   }, [eventEl, rect]);
 
   useEffect(() => {
-    // Animation loop
+    let animationId;
+
     const updateTrail = () => {
-      // First element follows quickly
-      gsap.to(trailPos[0].current, {
-        x: pos.current.x,
-        y: pos.current.y,
-        duration: 0.1,
-        ease: "power1.out",
-      });
+      const currentPositions = trailPos.current;
 
-      // Other elements follow more slowly
+      currentPositions[0].x += (pos.current.x - currentPositions[0].x) * eases[0];
+      currentPositions[0].y += (pos.current.y - currentPositions[0].y) * eases[0];
+
       for (let i = 1; i < 3; i++) {
-        gsap.to(trailPos[i].current, {
-          x: trailPos[i - 1].current.x,
-          y: trailPos[i - 1].current.y,
-          duration: 0.5,
-          ease: "power2.out",
-        });
+        currentPositions[i].x += (currentPositions[i - 1].x - currentPositions[i].x) * eases[i];
+        currentPositions[i].y += (currentPositions[i - 1].y - currentPositions[i].y) * eases[i];
       }
-
-      // Update DOM
       trailRefs.forEach((ref, i) => {
         if (ref.current) {
           ref.current.style.transform = trans(
-            trailPos[i].current.x,
-            trailPos[i].current.y
+            currentPositions[i].x,
+            currentPositions[i].y
           );
         }
       });
 
-      requestAnimationFrame(updateTrail);
+      animationId = requestAnimationFrame(updateTrail);
     };
 
-    const animationId = requestAnimationFrame(updateTrail);
+    animationId = requestAnimationFrame(updateTrail);
     return () => cancelAnimationFrame(animationId);
   }, []);
 

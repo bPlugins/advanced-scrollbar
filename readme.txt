@@ -2,9 +2,9 @@
 Contributors: bplugins, abuhayat, charlescormier, muradwahid, freemius
 Donate link: https://www.buymeacoffee.com/abuhayat
 Tags: Color Scrollbar, custom scroll, nice scrollbar, scrollbar, cursor effect
-Requires at least: 6.5+
-Tested up to: 6.8
-Stable tag: 1.1.8
+Requires at least: 6.5
+Tested up to: 6.9
+Stable tag: 1.1.12
 Requires PHP: 7.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -135,6 +135,15 @@ Yes, You can do that.
 
 == Changelog ==
 
+= 1.1.11 - 7 May, 2026 =
+* Fixed: Removed premium feature gating to comply with WordPress.org Guideline 5 (Trialware)
+* Fixed: Added public source repository link in readme for compiled/minified build files
+* Fixed: Replaced GSAP library with a GPL-compatible alternative to comply with WordPress.org licensing requirements
+* Fixed: Added Freemius external service disclosure in readme
+
+= 1.1.9 - 9 Oct, 2025 =
+* Fixed scroll behavior
+
 = 1.1.8 - 23 Sep, 2025 =
 * Fixed emulate touch issue
 
@@ -155,3 +164,23 @@ Yes, You can do that.
 = 1.0 =
 * Initial Release
 
+
+== Source Code ==
+
+You can find the source code, report bugs, and contribute to the development of this plugin on our GitHub repository:
+[**Advanced Scrollbar on GitHub**](https://github.com/bPlugins/advanced-scrollbar)
+
+This plugin bundles the following third-party JavaScrip libraries.
+
+= jQuery Nicescroll =
+* **Source:** https://github.com/inuyaksa/jquery.nicescroll
+* **GitHub:** https://github.com/inuyaksa/jquery.nicescroll
+* **License:** MIT – [https://github.com/inuyaksa/jquery.nicescroll/blob/master/MIT.LICENSE](https://github.com/inuyaksa/jquery.nicescroll/blob/master/MIT.LICENSE)
+* **Purpose:** Enhances scrollable areas with smooth scrolling, momentum effects, and customizable stylish scrollbars for a more modern and user-friendly interface experience.
+
+= Freemius SDK =
+
+* **Source:** [https://freemius.com/](https://freemius.com/)
+* **GitHub:** [https://github.com/Freemius/wordpress-sdk](https://github.com/Freemius/wordpress-sdk)
+* **License:** GPLv3 – [https://github.com/Freemius/wordpress-sdk/blob/master/LICENSE.txt](https://github.com/Freemius/wordpress-sdk/blob/master/LICENSE.txt)
+* **Purpose:** Provides opt-in usage tracking and analytics to help improve the plugin.

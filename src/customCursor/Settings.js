@@ -14,13 +14,9 @@ import { pluginIcon } from "./utils/icons";
 
 import "./editor.scss";
 import { Button } from "@wordpress/components";
-import useWPAjax from "../settings/hooks/useWPAjax";
 // const customEvent = new CustomEvent("dataFetched2");
 const Settings = props => {
   const { postMeta, setPostMeta } = props;
-
-  const { data } = useWPAjax('csbAdvScrollbarPremiumChecker', { _wpnonce: window.wpApiSettings.nonce },true);
-  const { isPremium = false } = data || {};
   const [isSaving, setIsSaving] = useState(false);
   
   const isSavingPost = useSelect((select) => select('core/editor').isSavingPost(), []);
@@ -60,7 +56,7 @@ const Settings = props => {
       <PluginSidebarMoreMenuItem target="advanced-scrollbar-custom-cursor">Advanced Scrollbar</PluginSidebarMoreMenuItem>
       <PluginSidebar name="advanced-scrollbar-custom-cursor" title={__("Advanced Scrollbar - Cursor and Click effect settings.", "advanced-scrollbar")}>
         <PanelBody className="bPlPanelBody" title={__("Cursor", "advanced-scrollbar")} initialOpen={true}>
-          <OptionSettings {...{ csbAvScrData, setCsbAvScrData, isPremium }} />
+          <OptionSettings {...{ csbAvScrData, setCsbAvScrData }} />
 
           <Flex className="mt-5" justify="end" width="100%"><Button className="settings-custom-cursor-button" type="button" variant="primary" onClick={handlePublish} disabled={isSaving}>{isSaving ? "Saving..." : "Save"}</Button></Flex>
         </PanelBody>

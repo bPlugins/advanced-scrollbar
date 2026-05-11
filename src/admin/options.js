@@ -86,66 +86,7 @@ export const options = {
                     title: "Enable Touch Behavior",
                     label: "enable cursor-drag scrolling like touch devices in desktop computer (default:Off)",
                     default: 0
-                },
-                {
-                    id: "asb_dynamic_height_scrollbar",
-                    field: "radio",
-                    title: "Dynamic Full Height Scrollbar",
-                    after: "Select on option for showing dynamic scrollbar",
-                    isPremium: true,
-                    options: {
-                        "on": "On",
-                        "off": "Off"
-                    },
-                    default: "off"
-
-                },
-                {
-                    id: "asb_gradient_color",
-                    field: "color_group",
-                    title: "Full Height Scrollbar Gradient Color",
-                    subtitle: "Change Scrollbar Color.",
-                    isPremium: true,
-                    options: {
-                        "color-1": "Color 1",
-                        "color-2": "Color 2",
-                        "color-3": "Color 3"
-                    },
-                    default: {
-                        "color-1": "#ffce4b",
-                        "color-2": "#ff395e",
-                        "color-3": "#833ab4"
-                    }
-                },
-                {
-                    id: "asb_floating_scrollbar",
-                    field: "radio",
-                    title: "Show Floating Scrollbar?",
-                    after: "Select on option for showing floating scrollbar",
-                    isPremium: true,
-                    options: {
-                        "on": "On",
-                        "off": "Off"
-                    },
-                    default: "off"
-
-                },
-                {
-                    id: "asb_floating_scrollbar_bg_color",
-                    title: "Floating Scrollbar BG Color",
-                    after: "Change Scrollbar BG Color",
-                    field: "color",
-                    default: "#9837bf",
-                    isPremium: true
-                },
-                {
-                    id: "asb_floating_scrollbar_text_color",
-                    title: "Floating Scrollbar Text Color",
-                    after: "Change Scrollbar Text Color",
-                    field: "color",
-                    default: "#ffffff",
-                    isPremium: true
-                },
+                }
             ]
         },
         {

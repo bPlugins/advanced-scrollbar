@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if( !class_exists('CSBScrollBarSettings') ){
 	class CSBScrollBarSettings{
 		public function __construct(){
@@ -12,13 +16,17 @@ if( !class_exists('CSBScrollBarSettings') ){
 		}
 
 		function bPlSettingsOptions(){
-			$nonce = sanitize_text_field( $_POST['_wpnonce'] ?? null );
+			$nonce = isset( $_POST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) : '';
 			
-			if( !wp_verify_nonce( $nonce, "wp_rest" ) ){
+			if( !wp_verify_nonce( $nonce, "adv_scrollbar_nc" ) ){
 				wp_send_json_error( 'Invalid Request' );
 			}
 			
-			$js_data = json_decode( wp_kses_stripslashes( sanitize_text_field( $_POST['asb-advanced-scrollbar-thirds'] ?? null ) ), true );
+			if ( !current_user_can( 'manage_options' ) ) {
+				wp_send_json_error( 'Unauthorized Access' );
+			}
+
+			$js_data = json_decode( wp_kses_stripslashes( sanitize_text_field( wp_unslash($_POST['asb-advanced-scrollbar-thirds']) ) ), true );
 
 			$db_data = get_option('asb-advanced-scrollbar-thirds', [] );
 			if( !$js_data && $db_data ){

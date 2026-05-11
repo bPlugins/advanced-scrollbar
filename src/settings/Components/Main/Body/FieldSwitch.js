@@ -1,5 +1,4 @@
 import BCheckboxControl from "../../Fields/BCheckboxControl/BCheckboxControl";
-import BColorGroup from "../../Fields/BColorGroup/BColorGroup";
 import BRadioControl from "../../Fields/BRadioControl/BRadioControl";
 import BTextControl from "../../Fields/BTextControl/BTextControl";
 import Border from "../../Fields/Border/Border";
@@ -17,7 +16,6 @@ const FieldSwitch = (props) => {
     case 'checkbox':
       return <BCheckboxControl {...extraFields} defaultValue={defaultValue} {...attributes} options={options} value={value} onChange={val => onChange(val)} />
     case 'spinner': return <Spinner {...fieldProps} {...extraFields} defaultValue={defaultValue} onChange={val => onChange(val)} />
-    case "color_group": return <BColorGroup options={options} {...fieldProps} {...attributes} {...extraFields} onChange={val => onChange(val)} />
     case "text": return <BTextControl  {...fieldProps} {...attributes} placeholder={placeholder} defaultValue={defaultValue} onChange={val => onChange(val)} name={value} />
   }
 }

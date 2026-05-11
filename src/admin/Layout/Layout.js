@@ -1,39 +1,48 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
-import Header from '../../../../bpl-tools/Admin/Header/Header';
+import Header from '../../../../bpl-tools/Admin/Header'
 
 const navigation = [
   { name: 'Welcome', href: '/welcome' },
   { name: 'Scrollbar Settings', href: '/settings' },
   { name: 'Custom Cursor And Click Effects', href: '/custom-cursor' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'Our Other Popular Plugins', href: '/popularPlugin' },
+  { name: 'Feature Comparison', href: '/feature-comparison' },
+  { name: 'Activation', href: '/activation' }
 ]
 
 const Layout = (props) => {
-  const { isPremium } = props;
+  const { isPremium, hasPro } = props;
 
   const location = useLocation();
 
-  return <div className='bPlDashboard'>
+  return <div className="bPlDashboard">
     <Header {...props}>
-      <nav className='bPlDashboardNav'>
+      <nav className="bPlDashboardNav">
         {navigation
-          ?.filter(item => !isPremium || !['/purchase', '/pricing', '/feature-comparison'].includes(item.href)) // Hide link for premium users
-          ?.map((item, index) => <Link
-            key={index}
-            to={item.href}
-            className={`navLink ${location.pathname === item.href ? 'active' : ''}`}
-          >
-            {item.name}
-          </Link>)}
+          ?.filter((item) => item.href !== "/activation" || hasPro) // Hide activation link for non-pro users
+          ?.filter(
+            (item) =>
+              !isPremium ||
+              !["/purchase", "/pricing", "/feature-comparison"].includes(
+                item.href,
+              ),
+          ) // Hide link for premium users
+          ?.map((item, index) => (
+            <Link
+              key={index}
+              to={item.href}
+              className={`navLink ${location.pathname === item.href ? "active" : ""
+                }`}
+            >
+              {item.name}
+            </Link>
+          ))}
       </nav>
     </Header>
 
-    <main className='bPlDashboardMain'>
-      <div className='bPlDashboardContainer'>
-        <Outlet />
-      </div>
+    <main className="bPlDashboardMain">
+      <Outlet />
     </main>
   </div>
 }

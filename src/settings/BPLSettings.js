@@ -7,8 +7,8 @@ import { extractDefaultsNested } from './utils/functions';
 
 
 const BPLSettings = props => {
-	const { options } = props;
-	const { data: dbData = null, isLoading, refetch, saveData } = useWPAjax('csbScrollbarOptions', { _wpnonce: window.wpApiSettings.nonce, id: options.id, });
+	const { options, nonce } = props;
+	const { data: dbData = null, isLoading, refetch, saveData } = useWPAjax('csbScrollbarOptions', { _wpnonce: nonce, id: options.id, });
 	const [data, setData] = useState({});
 	const [isEqual, setIsEqual] = useState(false)
 	const [isSaved, setIsSaved] = useState(false)

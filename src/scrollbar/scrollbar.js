@@ -5,6 +5,9 @@ import { useMovePosition } from '../hooks/useMovePosition';
 import { generateGradient, getBorderCSS, isSet } from '../utils/function';
 import "./style.scss";
 const Scrollbar = ({ scrollbarData }) => {
+
+    const html = document.documentElement;
+
     const { asb_showscrollbar, asb_color = '#46b3e6', asb_background = '', asb_mousescrollstep = 40, asb_autohidemode = false, asb_railalign = "right", asb_scrollspeed = "60", asb_touchbehavior, asb_dynamic_height_scrollbar = 'off', asb_floating_scrollbar = "off", asb_gradient_color = {
         "color-1": "#ffce4b",
         "color-2": "#ff395e",
@@ -23,6 +26,9 @@ const Scrollbar = ({ scrollbarData }) => {
     const { cursorPosition, scrollPercentage } = useMovePosition(asb_floating_scrollbar)
 
     useEffect(() => {
+
+        html.classList.add('csb-advanced-scrollbar');
+
         if (isShowScrollBar) {
             $("html").niceScroll({
                 hwacceleration: true,
@@ -57,6 +63,7 @@ const Scrollbar = ({ scrollbarData }) => {
             if ($("html").getNiceScroll()) {
                 $("html").getNiceScroll().remove();
             }
+            html.classList.remove('csb-advanced-scrollbar');
         };
     }, [
         JSON.stringify(scrollbarData),
@@ -78,7 +85,6 @@ const Scrollbar = ({ scrollbarData }) => {
     ]);
 
     useEffect(() => {
-        const html = document.documentElement;
         if (asb_dynamic_height_scrollbar == "on" || asb_floating_scrollbar == "on") {
             html.classList.add('csb-scrollbar-active');
         }

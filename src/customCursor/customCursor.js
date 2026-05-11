@@ -2,11 +2,8 @@ import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import CursorEffects from './cursor/Effects/CursorEffects';
 import Cursor from './cursor/Shape/Cursor';
-import CursorRibbon from './cursor/Shape/CursorRibbon/CursorRibbon';
-import useCursorVisibility from './hooks/useCursorVisibility';
 import { useFilterCursorData } from './hooks/useFilterCursorData';
 import useWPAjax from './utils/useWPAjax';
-// const { createRoot } = window.ReactDOM;
 
 import "./style.scss";
 import { isSet } from './utils/common';
@@ -14,7 +11,6 @@ import { isSet } from './utils/common';
 const CustomCursor = ({ cursorInfo}) => {
   const { data, isLoading } = useWPAjax('csb_get_adv_scrollbar_cursor_data_settings', { nonce: window.csbAdvScrollbarCursorConfig?.nonce });
   const [cursorData, setCursorData] = useState(null);
-  const isCursorVisible = useCursorVisibility();
   const [state, setState] = useState(cursorInfo);
 
   useEffect(() => {
@@ -43,14 +39,11 @@ const CustomCursor = ({ cursorInfo}) => {
       body.style.cursor = cursorCssVar.cursor;
     }
   }, [filteredData])
-  // eslint-disable-next-line no-undef
-  // console.log(csbIsPremium)
   return <>
       {
         filteredData?.source == "shape" && <>
-          {(filteredData?.shape?.type === 'ribbon' && isCursorVisible) && <CursorRibbon {...filteredData?.shape?.ribbon} domEl={document.body} eventEl={document.body} rect={document.body.getBoundingClientRect()} key={filteredData?.shape?.type} />}
   
-        {(filteredData?.shape?.type && filteredData?.shape?.type !== 'ribbon') ? <Cursor shape={filteredData?.shape} domEl={window} eventEl={window} rect={{}} key={filteredData?.shape?.type} /> : null}
+        {filteredData?.shape?.type && <Cursor shape={filteredData?.shape} domEl={window} eventEl={window} rect={{}} key={filteredData?.shape?.type} />} 
         </>
       }
       {filteredData?.effect?.type && <CursorEffects effect={filteredData?.effect} key={filteredData?.effect?.type} />}

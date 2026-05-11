@@ -1,11 +1,12 @@
+import { __ } from '@wordpress/i18n';
 import { cursorEffectsOptions } from '../../utils/options';
-import { SelectControlPro } from '../../../../../../../bpl-tools/ProControls';
+import { SelectControl } from '@wordpress/components';
 
-const ClickEffectOptions = ({ value, onChange, isPremium, setIsProModalOpen }) => {
+const ClickEffectOptions = ({ value, onChange }) => {
   return <>
 
-    <SelectControlPro className='mt10' label="Effect Type" labelPosition='edge' value={value?.type} onChange={(val) => onChange({ ...value, type: val })} options={cursorEffectsOptions} proValues={['radial', 'explosion', 'rippleCircle', 'rippleDouble', 'rippleWave', 'ripplePulse']} isPremium={isPremium} setIsProModalOpen={setIsProModalOpen} />
-    </>
+    <SelectControl className='mt10' label={__('Effect Type', 'advanced-scrollbar')} labelPosition='edge' value={value?.type} onChange={(val) => onChange({ ...value, type: val })} options={cursorEffectsOptions} />
+  </>
 };
 
 export default ClickEffectOptions;
