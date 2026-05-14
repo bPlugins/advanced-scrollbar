@@ -8,7 +8,7 @@ import { extractDefaultsNested } from './utils/functions';
 
 const BPLSettings = props => {
 	const { options, nonce } = props;
-	const { data: dbData = null, isLoading, refetch, saveData } = useWPAjax('csbScrollbarOptions', { _wpnonce: nonce, id: options.id, });
+	const { data: dbData = null, isLoading, refetch, saveData } = useWPAjax('casbScrollbarOptions', { _wpnonce: nonce, id: options.id, });
 	const [data, setData] = useState({});
 	const [isEqual, setIsEqual] = useState(false)
 	const [isSaved, setIsSaved] = useState(false)
@@ -19,10 +19,6 @@ const BPLSettings = props => {
 			setData(data => _.merge(data, dbData))
 		}
 	}, [dbData, isLoading]);
-
-	useEffect(() => {
-
-	}, [])
 
 	const onSaveData = () => {
 		if (!isLoading) {

@@ -23,20 +23,19 @@ const Settings = props => {
   const isPublishingPost = useSelect((select) => select('core/editor').isPublishingPost(), []);
 
 
-  const [csbAvScrData, setCsbAvScrData] = useState(JSON.parse(postMeta?.csbAdvScrollBarCursor || "{}"));
+  const [casbAvScrData, setCasbAvScrData] = useState(JSON.parse(postMeta?.csbAdvScrollBarCursor || "{}"));
 
   useEffect(() => {
     debounce(() => {
-      if (csbAvScrData) {
-          // setPostMeta({ csbAdvScrollBarCursor: JSON.stringify(csbAvScrData) });
-        document.dispatchEvent(new CustomEvent("advScrCursorCustomEventOnCursor", {
+      if (casbAvScrData) {
+        document.dispatchEvent(new CustomEvent("casbScrCursorCustomEventOnCursor", {
           detail: {
-            data: csbAvScrData
+            data: casbAvScrData
           }
         }));
       }
     }, 600)();
-  }, [csbAvScrData]);
+  }, [casbAvScrData]);
 
 
   useEffect(() => {
@@ -47,7 +46,7 @@ const Settings = props => {
 
   const handlePublish = async () => {
     setIsSaving(true);
-    setPostMeta({ csbAdvScrollBarCursor: JSON.stringify(csbAvScrData) });
+    setPostMeta({ csbAdvScrollBarCursor: JSON.stringify(casbAvScrData) });
     await wp.data.dispatch('core/editor').savePost();
   };
 
@@ -56,7 +55,7 @@ const Settings = props => {
       <PluginSidebarMoreMenuItem target="advanced-scrollbar-custom-cursor">Advanced Scrollbar</PluginSidebarMoreMenuItem>
       <PluginSidebar name="advanced-scrollbar-custom-cursor" title={__("Advanced Scrollbar - Cursor and Click effect settings.", "advanced-scrollbar")}>
         <PanelBody className="bPlPanelBody" title={__("Cursor", "advanced-scrollbar")} initialOpen={true}>
-          <OptionSettings {...{ csbAvScrData, setCsbAvScrData }} />
+          <OptionSettings {...{ casbAvScrData, setCasbAvScrData }} />
 
           <Flex className="mt-5" justify="end" width="100%"><Button className="settings-custom-cursor-button" type="button" variant="primary" onClick={handlePublish} disabled={isSaving}>{isSaving ? "Saving..." : "Save"}</Button></Flex>
         </PanelBody>

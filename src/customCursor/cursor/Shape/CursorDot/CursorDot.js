@@ -66,15 +66,15 @@ const CursorDot = ({
   }, [duration]);
 
   const followCursorStyle = {
-    ...(isSet(size) && { "--advScrollbar-cursor-dot-cursor-size": size + 'px' }),
-    ...(isSet(color) && { "--advScrollbar-cursor-dot-cursor-bg": color }),
+    ...(isSet(size) && { "--casbScrollbar-cursor-dot-cursor-size": size + 'px' }),
+    ...(isSet(color) && { "--casbScrollbar-cursor-dot-cursor-bg": color }),
     willChange: "transform"
   };
 
   return (
     <div
       ref={dotRef}
-      className={`advScrollbar-cursor-dotCursor`}
+      className={`casbScrollbar-cursor-dotCursor`}
       style={followCursorStyle}
     />
   );

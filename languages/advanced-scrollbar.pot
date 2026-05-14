@@ -1,0 +1,291 @@
+# Copyright (C) 2026 bPlugins
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Scrollbar – Custom Scrollbar Styling and Behavior 1.1.12\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/advanced-scrollbar\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-05-14T05:49:11+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: advanced-scrollbar\n"
+
+#. Plugin Name of the plugin
+#: advanced-scrollbar.php
+msgid "Advanced Scrollbar – Custom Scrollbar Styling and Behavior"
+msgstr ""
+
+#. Description of the plugin
+#: advanced-scrollbar.php
+msgid "Customize scrollbar of your website with unlimited styling and color using the plugin."
+msgstr ""
+
+#. Author of the plugin
+#: advanced-scrollbar.php
+msgid "bPlugins"
+msgstr ""
+
+#. Author URI of the plugin
+#: advanced-scrollbar.php
+msgid "http://bplugins.com"
+msgstr ""
+
+#: inc/admin.php:18
+#: inc/admin.php:19
+msgid "Advanced Scrollbar Settings"
+msgstr ""
+
+#: inc/admin.php:39
+msgid "Settings"
+msgstr ""
+
+#: inc/admin.php:63
+msgid "Data will be deleted when the plugin is uninstalled."
+msgstr ""
+
+#: inc/admin.php:64
+msgid "Data will be preserved when the plugin is uninstalled."
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/ClickEffect/ClickEffectOptions.js:8
+msgid "Effect Type"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/ClickEffect/ClickEffectStyles.js:25
+#: src/admin/Pages/CursorEffect/Settings/ClickEffect/ClickEffectStyles.js:36
+#: src/customCursor/settings/style/EffectStyleOptions.js:26
+#: src/customCursor/settings/style/EffectStyleOptions.js:37
+msgid "Easing"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/General/CursorShape.js:17
+#: src/customCursor/settings/options/General.js:18
+msgid "Enable Default Cursor"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/General/ShapeType.js:12
+msgid "Select Shape Type"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/General/ShapeType.js:17
+#: src/admin/Pages/CursorEffect/Settings/General/ShapeType.js:30
+#: src/admin/Pages/CursorEffect/Settings/General/ShapeType.js:35
+#: src/customCursor/settings/options/CursorShape.js:14
+#: src/customCursor/settings/options/CursorShape.js:27
+#: src/customCursor/settings/options/CursorShape.js:32
+msgid "Cursor Duration"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/General/ShapeType.js:19
+#: src/admin/Pages/CursorEffect/Settings/General/ShapeType.js:37
+#: src/customCursor/settings/options/CursorShape.js:16
+#: src/customCursor/settings/options/CursorShape.js:34
+msgid "Inner Cursor Duration"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/General/ShapeType.js:25
+#: src/customCursor/settings/options/CursorShape.js:22
+msgid "Blob Type"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/General/ShapeType.js:25
+#: src/customCursor/settings/options/CursorShape.js:22
+msgid "Circle"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/General/ShapeType.js:25
+#: src/customCursor/settings/options/CursorShape.js:22
+msgid "Square"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/Settings.js:49
+#: src/customCursor/settings/OptionSettings.js:18
+msgid "Select Cursor Source"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/Style/ShapeStyle.js:17
+#: src/customCursor/settings/style/ShapeStyleOptions.js:14
+msgid "Follow Cursor"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/Style/ShapeStyle.js:18
+#: src/customCursor/settings/style/ShapeStyleOptions.js:14
+msgid "Inner Cursor"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/Style/ShapeStyle.js:46
+#: src/customCursor/settings/style/ShapeStyleOptions.js:46
+msgid "Blob Size"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/Settings/Style/ShapeStyle.js:48
+#: src/customCursor/settings/style/ShapeStyleOptions.js:48
+msgid "Blob Color"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:4
+#: src/customCursor/Settings.js:57
+#: src/customCursor/utils/options.js:3
+#: src/customCursor/utils/options.js:8
+msgid "Cursor"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:5
+#: src/customCursor/utils/options.js:4
+msgid "Click Effect"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:9
+msgid "Shape"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:10
+#: src/customCursor/utils/options.js:9
+msgid "Shape Style"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:14
+#: src/customCursor/utils/options.js:25
+msgid "Default"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:15
+#: src/customCursor/utils/options.js:27
+msgid "Follow"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:16
+#: src/customCursor/utils/options.js:28
+msgid "Blob"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:17
+#: src/customCursor/utils/options.js:29
+msgid "Dot"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:18
+#: src/customCursor/utils/options.js:30
+msgid "Elastic"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:22
+#: src/customCursor/utils/options.js:34
+msgid "None"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:23
+#: src/customCursor/utils/options.js:36
+msgid "Spark"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:24
+#: src/customCursor/utils/options.js:37
+msgid "Spark Simple"
+msgstr ""
+
+#: src/admin/Pages/CursorEffect/utils/options.js:25
+#: src/customCursor/utils/options.js:38
+msgid "Starburst"
+msgstr ""
+
+#: src/admin/Pages/Settings.js:21
+msgid "Failed to save setting."
+msgstr ""
+
+#: src/admin/Pages/Settings.js:31
+msgid "Are you sure? This will permanently delete all Advanced Scrollbar settings, cursor effect data, and post meta when the plugin is uninstalled."
+msgstr ""
+
+#: src/admin/Pages/Settings.js:42
+msgid "Delete Data on Uninstall"
+msgstr ""
+
+#: src/admin/Pages/Settings.js:44
+msgid "When enabled, all plugin data will be permanently deleted when you uninstall (delete) the plugin. This includes:"
+msgstr ""
+
+#: src/admin/Pages/Settings.js:47
+msgid "Scrollbar appearance settings"
+msgstr ""
+
+#: src/admin/Pages/Settings.js:48
+msgid "Custom cursor and click effect settings"
+msgstr ""
+
+#: src/admin/Pages/Settings.js:49
+msgid "Per-page/post cursor effect meta data"
+msgstr ""
+
+#: src/admin/Pages/Settings.js:53
+msgid "⚠️ This action cannot be undone. Your data will be safe if you only deactivate the plugin."
+msgstr ""
+
+#: src/admin/Pages/Settings.js:65
+msgid "Data will be deleted on uninstall"
+msgstr ""
+
+#: src/admin/Pages/Settings.js:66
+msgid "Data will be preserved on uninstall"
+msgstr ""
+
+#: src/customCursor/Settings.js:56
+msgid "Advanced Scrollbar - Cursor and Click effect settings."
+msgstr ""
+
+#: src/customCursor/settings/options/CursorShape.js:12
+msgid "Cursor Shape"
+msgstr ""
+
+#: src/customCursor/utils/options.js:13
+msgid "Effect"
+msgstr ""
+
+#: src/customCursor/utils/options.js:14
+msgid "Effect Style"
+msgstr ""
+
+#: src/customCursor/utils/options.js:20
+msgid "Cursor Only"
+msgstr ""
+
+#: src/customCursor/utils/options.js:21
+msgid "Customizable Shape"
+msgstr ""
+
+#: src/customCursor/utils/options.js:26
+#: src/customCursor/utils/options.js:35
+msgid "Unset"
+msgstr ""
+
+#: src/customCursor/utils/options.js:42
+msgid "Low"
+msgstr ""
+
+#: src/customCursor/utils/options.js:43
+msgid "Medium"
+msgstr ""
+
+#: src/customCursor/utils/options.js:44
+msgid "High"
+msgstr ""
+
+#: src/customCursor/utils/options.js:48
+msgid "Ease Out"
+msgstr ""
+
+#: src/customCursor/utils/options.js:49
+msgid "Ease In"
+msgstr ""
+
+#: src/customCursor/utils/options.js:50
+msgid "Ease In Out"
+msgstr ""
+
+#: src/customCursor/utils/options.js:51
+msgid "Linear"
+msgstr ""

@@ -9,7 +9,7 @@ import App from './App';
 import { dashboardInfo } from './utils/data';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const adminEl = document.getElementById('csbScrollbarDashboard');
+  const adminEl = document.getElementById('casbScrollbarDashboard');
   const dataInfo = JSON.parse(adminEl.dataset.info);
 
   createRoot(adminEl).render(<App settingOptions={options} {...dashboardInfo(dataInfo)} />);

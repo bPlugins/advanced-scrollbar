@@ -135,6 +135,14 @@ Yes, You can do that.
 
 == Changelog ==
 
+= 1.1.12 - 11 May, 2026 =
+* Fixed: Removed GSAP library and replaced with raw JavaScript for GPL compliance
+* Fixed: Standardized all internal prefixes from csb/CSB to casb/CASB
+* Fixed: Removed all premium/trialware feature gating 
+* Fixed: Added Font Awesome Free 6.4.2 third-party library disclosure in readme
+* Fixed: Updated jQuery nicescroll third-party library documentation in readme
+* Fixed: Added source code repository link in readme
+
 = 1.1.11 - 7 May, 2026 =
 * Fixed: Removed premium feature gating to comply with WordPress.org Guideline 5 (Trialware)
 * Fixed: Added public source repository link in readme for compiled/minified build files
@@ -170,13 +178,21 @@ Yes, You can do that.
 You can find the source code, report bugs, and contribute to the development of this plugin on our GitHub repository:
 [**Advanced Scrollbar on GitHub**](https://github.com/bPlugins/advanced-scrollbar)
 
-This plugin bundles the following third-party JavaScrip libraries.
+== This plugin bundles the following third-party JavaScript/PHP libraries. ==
 
-= jQuery Nicescroll =
+= jQuery nicescroll v3.7.6 =
+* **File:** `assets/js/jquery.nicescroll.min.js`
 * **Source:** https://github.com/inuyaksa/jquery.nicescroll
 * **GitHub:** https://github.com/inuyaksa/jquery.nicescroll
 * **License:** MIT – [https://github.com/inuyaksa/jquery.nicescroll/blob/master/MIT.LICENSE](https://github.com/inuyaksa/jquery.nicescroll/blob/master/MIT.LICENSE)
 * **Purpose:** Enhances scrollable areas with smooth scrolling, momentum effects, and customizable stylish scrollbars for a more modern and user-friendly interface experience.
+
+= Font Awesome Free v6.4.2 =
+* **File:** `src/settings/assets/css/font-awesome.min.css`
+* **Source:** [https://fontawesome.com/](https://fontawesome.com/)
+* **GitHub:** [https://github.com/FortAwesome/Font-Awesome](https://github.com/FortAwesome/Font-Awesome)
+* **License:** Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT – [https://fontawesome.com/license/free](https://fontawesome.com/license/free)
+* **Purpose:** Provides scalable vector icons used in the plugin's admin settings interface for improved UI clarity and visual consistency.
 
 = Freemius SDK =
 
@@ -184,3 +200,9 @@ This plugin bundles the following third-party JavaScrip libraries.
 * **GitHub:** [https://github.com/Freemius/wordpress-sdk](https://github.com/Freemius/wordpress-sdk)
 * **License:** GPLv3 – [https://github.com/Freemius/wordpress-sdk/blob/master/LICENSE.txt](https://github.com/Freemius/wordpress-sdk/blob/master/LICENSE.txt)
 * **Purpose:** Provides opt-in usage tracking and analytics to help improve the plugin.
+
+= bpl-tools =
+* Source / GitHub: https://github.com/bPlugins/bpl-tools
+* License: GPL-2.0-or-later – https://www.gnu.org/licenses/gpl-2.0.html
+* Purpose: Shared utility library providing admin dashboard components and common Gutenberg editor controls.
+* External Services: The library may connect to bPlugins, WordPress.org, and Freemius services for product data and checkout functionality. See full details: https://github.com/bPlugins/bpl-tools#external-requests--why-they-are-made

@@ -11,32 +11,32 @@ import useWPAjax from "../../../utils/useWPAjax";
 import { shapeAndEffectOptions } from "../utils/options";
 
 const Settings = ({ nonce }) => {
-  const [csbAvScrData, setCsbAvScrData] = useState(null);
+  const [casbAvScrData, setCasbAvScrData] = useState(null);
 
   // fetch token from bplugins server using ajax
-  const { data, isLoading, saveData } = useWPAjax('csb_adv_scrollbar_cursor_data_settings', { nonce }); //authorize
+  const { data, isLoading, saveData } = useWPAjax('casb_adv_scrollbar_cursor_data_settings', { nonce }); //authorize
 
   useEffect(() => {
-    if (!isLoading && data && !csbAvScrData) {
-      setCsbAvScrData(data);
+    if (!isLoading && data && !casbAvScrData) {
+      setCasbAvScrData(data);
     }
   }, [isLoading])
 
 
   const saveInformation = () => {
-    if (!csbAvScrData?.source === 'predefined' && !csbAvScrData?.source === 'customUrl') return;
-    saveData({ csbAvScrData: JSON.stringify(csbAvScrData), save: true });
+    if (!casbAvScrData?.source === 'predefined' && !casbAvScrData?.source === 'customUrl') return;
+    saveData({ csbAvScrData: JSON.stringify(casbAvScrData), save: true });
   }
 
   useEffect(() => {
 
-    if (!csbAvScrData?.source === 'predefined' && !csbAvScrData?.source === 'customUrl') return;
-    window.dispatchEvent(new CustomEvent("csbAdvScrollbarCursorSettings", {
+    if (!casbAvScrData?.source === 'predefined' && !casbAvScrData?.source === 'customUrl') return;
+    window.dispatchEvent(new CustomEvent("casbAdvScrollbarCursorSettings", {
       detail: {
-        data: csbAvScrData
+        data: casbAvScrData
       }
     }));
-  }, [JSON.stringify(csbAvScrData)]);
+  }, [JSON.stringify(casbAvScrData)]);
 
   return (
     <div className='custom-cursor-settings-container'>
@@ -46,12 +46,12 @@ const Settings = ({ nonce }) => {
           {tab => <>
 
             {tab.name == "shape" && <>
-              <SelectControl className="mt10" label={__("Select Cursor Source", "advanced-scrollbar")} labelPosition="edge" options={cursorSourceOptions} value={csbAvScrData?.source} onChange={value => setCsbAvScrData({ ...csbAvScrData, source: value })} />
+              <SelectControl className="mt10" label={__("Select Cursor Source", "advanced-scrollbar")} labelPosition="edge" options={cursorSourceOptions} value={casbAvScrData?.source} onChange={value => setCasbAvScrData({ ...casbAvScrData, source: value })} />
               
-              {csbAvScrData?.source === "shape" && <CursorShape {...{ csbAvScrData, setCsbAvScrData }} />}
+              {casbAvScrData?.source === "shape" && <CursorShape {...{ casbAvScrData, setCasbAvScrData }} />}
 
             </>}
-            {tab.name == "effect" && <CursorEffect {...{ csbAvScrData, setCsbAvScrData }} />}
+            {tab.name == "effect" && <CursorEffect {...{ casbAvScrData, setCasbAvScrData }} />}
           </>}
         </TabPanel>
         <Button onClick={() => saveInformation()} className={`custom-cursor-dashboard-button ${isLoading ? "btnSaving" : ""}`} variant="primary">{isLoading ? "Saving..." : "Save" }</Button>

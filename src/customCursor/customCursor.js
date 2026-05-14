@@ -9,12 +9,12 @@ import "./style.scss";
 import { isSet } from './utils/common';
 
 const CustomCursor = ({ cursorInfo}) => {
-  const { data, isLoading } = useWPAjax('csb_get_adv_scrollbar_cursor_data_settings', { nonce: window.csbAdvScrollbarCursorConfig?.nonce });
+  const { data, isLoading } = useWPAjax('casb_get_adv_scrollbar_cursor_data_settings', { nonce: window.casbAdvScrollbarCursorConfig?.nonce });
   const [cursorData, setCursorData] = useState(null);
   const [state, setState] = useState(cursorInfo);
 
   useEffect(() => {
-    document.addEventListener('advScrCursorCustomEventOnCursor', function (e) {
+    document.addEventListener('casbScrCursorCustomEventOnCursor', function (e) {
       setState(e.detail.data);
     });
   }, [])
@@ -56,7 +56,7 @@ export default CustomCursor;
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const cursorEl = document.getElementById('csbAdvScrollBarCursor');
+  const cursorEl = document.getElementById('casbAdvScrollBarCursor');
 
   if (cursorEl) {
     const cursorData = JSON.parse(cursorEl.dataset.cursor);

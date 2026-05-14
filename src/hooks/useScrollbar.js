@@ -175,7 +175,6 @@ export const useScrollbar = (
     useEffect(() => {
         setIsActive(isShowScrollbar);
         if (!isShowScrollbar) return;
-        // html.classList.add('csb-scrollbar-active');
 
         const updateScrollbar = () => {
             if (!thumbRef?.current) return;
@@ -305,7 +304,7 @@ export const useScrollbar = (
 
         // Cleanup function
         return () => {
-            html.classList.remove('csb-scrollbar-active');
+            html.classList.remove('casb-scrollbar-active');
             window.removeEventListener('resize', updateScrollbar);
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('wheel', handleWheel);

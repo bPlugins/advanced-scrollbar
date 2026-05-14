@@ -27,7 +27,7 @@ const Scrollbar = ({ scrollbarData }) => {
 
     useEffect(() => {
 
-        html.classList.add('csb-advanced-scrollbar');
+        html.classList.add('casb-advanced-scrollbar');
 
         if (isShowScrollBar) {
             $("html").niceScroll({
@@ -63,7 +63,7 @@ const Scrollbar = ({ scrollbarData }) => {
             if ($("html").getNiceScroll()) {
                 $("html").getNiceScroll().remove();
             }
-            html.classList.remove('csb-advanced-scrollbar');
+            html.classList.remove('casb-advanced-scrollbar');
         };
     }, [
         JSON.stringify(scrollbarData),
@@ -86,19 +86,19 @@ const Scrollbar = ({ scrollbarData }) => {
 
     useEffect(() => {
         if (asb_dynamic_height_scrollbar == "on" || asb_floating_scrollbar == "on") {
-            html.classList.add('csb-scrollbar-active');
+            html.classList.add('casb-scrollbar-active');
         }
         return () => {
-            html.classList.remove('csb-scrollbar-active');
+            html.classList.remove('casb-scrollbar-active');
         };
     }, [asb_dynamic_height_scrollbar, asb_floating_scrollbar])
 
     const dynamicHeightStyle = {
-        ...(isSet(scrollPercentage) && { "--csb-scrollbar-rail-dynamic-height": scrollPercentage + "%" })
+        ...(isSet(scrollPercentage) && { "--casb-scrollbar-rail-dynamic-height": scrollPercentage + "%" })
     }
     const floatingStyle = {
-        ...(isSet(asb_floating_scrollbar_bg_color) && { "--csb-scrollbar-floating-bg-color": asb_floating_scrollbar_bg_color }),
-        ...(isSet(asb_floating_scrollbar_text_color) && { "--csb-scrollbar-floating-text-color": asb_floating_scrollbar_text_color })
+        ...(isSet(asb_floating_scrollbar_bg_color) && { "--casb-scrollbar-floating-bg-color": asb_floating_scrollbar_bg_color }),
+        ...(isSet(asb_floating_scrollbar_text_color) && { "--casb-scrollbar-floating-text-color": asb_floating_scrollbar_text_color })
     }
 
     // if (isLoading ) return;
@@ -106,11 +106,11 @@ const Scrollbar = ({ scrollbarData }) => {
 
     return <>
         {
-            asb_dynamic_height_scrollbar == "on" && <div className={`csb-scrollbar-dynamic-height`} style={{ background: generateGradient(asb_gradient_color), ...dynamicHeightStyle }} ></div>
+            asb_dynamic_height_scrollbar == "on" && <div className={`casb-scrollbar-dynamic-height`} style={{ background: generateGradient(asb_gradient_color), ...dynamicHeightStyle }} ></div>
         }
 
         {
-            asb_floating_scrollbar == "on" && <div ref={floatingRef} className={`csb-scrollbar-floating`} style={{ top: cursorPosition.y + 20, left: (cursorPosition.x + 20), ...floatingStyle }} >Page Scrolled {scrollPercentage} %</div>
+            asb_floating_scrollbar == "on" && <div ref={floatingRef} className={`casb-scrollbar-floating`} style={{ top: cursorPosition.y + 20, left: (cursorPosition.x + 20), ...floatingStyle }} >Page Scrolled {scrollPercentage} %</div>
         }
 
     </>
@@ -119,7 +119,7 @@ const Scrollbar = ({ scrollbarData }) => {
 export default Scrollbar;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const scrollbarEl = document.getElementById("csbScrollbar");
+    const scrollbarEl = document.getElementById("casbScrollbar");
     if (!scrollbarEl) return;
     const scrollbarData = JSON.parse(scrollbarEl.dataset.scrollbar);
 

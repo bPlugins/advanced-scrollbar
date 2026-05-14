@@ -84,7 +84,7 @@ export default function BlobCursor({
   return (
     <>
       <svg style={{ position: "absolute", width: 0, height: 0 }}>
-        <filter id="advScrollbar-cursor-blob">
+        <filter id="casbScrollbar-cursor-blob">
           <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="30" />
           <feColorMatrix
             in="blur"

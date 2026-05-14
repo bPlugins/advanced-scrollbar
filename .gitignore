@@ -1,3 +1,5 @@
 node_modules
-plugin-slug.zip
+*.zip
 .DS_Store
+*.map
+/vendor/

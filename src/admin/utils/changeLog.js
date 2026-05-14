@@ -1,5 +1,16 @@
 export const changeLog = [
   {
+    version: '1.1.12 - 11 May, 2026',
+    list: [
+      `Fixed: Removed GSAP library and replaced with raw JavaScript for GPL compliance`,
+      `Fixed: Standardized all internal prefixes from csb/CSB to casb/CASB.`,
+      `Fixed: Added Font Awesome Free 6.4.2 third-party library disclosure in readme`,
+      `Fixed: Updated jQuery nicescroll third-party library documentation in readme`,
+      `Fixed: Added source code repository link in readme`
+    ],
+    type: 'fix'
+  },
+  {
     version: '1.1.11 - 7 May, 2026',
     list: [
       `Removed premium feature gating to comply with WordPress.org Guideline 5 (Trialware).`,

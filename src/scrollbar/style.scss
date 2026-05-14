@@ -1,4 +1,4 @@
-html.csb-scrollbar-active {
+html.casb-scrollbar-active {
 	scrollbar-width: none !important;
 	// scroll-behavior: auto !important;
 	/* Disables native smooth scrolling */
@@ -10,29 +10,29 @@ html.csb-scrollbar-active {
 // }
 
 //rail styles
-$railDisplay: var(--csb-scrollbar-rail-display-property, block);
-$railBgColor: var(--csb-scrollbar-rail-background-color, #0000);
-$railWidth  : var(--csb-scrollbar-rail-width,12px);
+$railDisplay: var(--casb-scrollbar-rail-display-property, block);
+$railBgColor: var(--casb-scrollbar-rail-background-color, #0000);
+$railWidth  : var(--casb-scrollbar-rail-width,12px);
 
 //thumb variables
-$thumbHeight: var(--csb-scrollbar-thumb-height, 100%);
-$thumbPosition: var(--csb-scrollbar-thumb-position, 0);
-$thumbColor: var(--csb-scrollbar-thumb-color, #46b3e6);
-$thumbBRadius: var(--csb-scrollbar-thumb-border-radius, 12px);
+$thumbHeight: var(--casb-scrollbar-thumb-height, 100%);
+$thumbPosition: var(--casb-scrollbar-thumb-position, 0);
+$thumbColor: var(--casb-scrollbar-thumb-color, #46b3e6);
+$thumbBRadius: var(--casb-scrollbar-thumb-border-radius, 12px);
 
 
 //dynamic height variables
-$railDynamicHeight : var(--csb-scrollbar-rail-dynamic-height, 0px);
+$railDynamicHeight : var(--casb-scrollbar-rail-dynamic-height, 0px);
 
 //floating variables
 
-$floatingBgColor : var(--csb-scrollbar-floating-bg-color, #46b3e6);
-$floatingTextColor : var(--csb-scrollbar-floating-text-color, #ffffff);
+$floatingBgColor : var(--casb-scrollbar-floating-bg-color, #46b3e6);
+$floatingTextColor : var(--casb-scrollbar-floating-text-color, #ffffff);
 
 
 
 
-html.csb-scrollbar-active::-webkit-scrollbar {
+html.casb-scrollbar-active::-webkit-scrollbar {
 	width: 0;
 	scrollbar-width: none;
 	/* Firefox */
@@ -45,7 +45,7 @@ html.csb-scrollbar-active::-webkit-scrollbar {
 	}
 }
 
-.csb-scrollbar-rail {
+.casb-scrollbar-rail {
 	position: fixed;
 	display: $railDisplay;
 	width: $railWidth;
@@ -62,27 +62,27 @@ html.csb-scrollbar-active::-webkit-scrollbar {
 		top: 0;
 	}
 
-	&.csb-scrollbar-auto-hide {
+	&.casb-scrollbar-auto-hide {
 		transition: all 1s ease-in-out;
 		opacity: 0;
 		pointer-events: none;
 	}
 
-	&.csb-scrollbar-rail-cursor-hover {
-		.csb-scrollbar-rail-thumb {
+	&.casb-scrollbar-rail-cursor-hover {
+		.casb-scrollbar-rail-thumb {
 			transition: all 0.5s ease-in-out;
 			opacity: 0;
 		}
 
 		&:hover {
-			.csb-scrollbar-rail-thumb {
+			.casb-scrollbar-rail-thumb {
 				transition: all 0s ease-in-out;
 				opacity: 1;
 			}
 		}
 	}
 
-	.csb-scrollbar-rail-thumb {
+	.casb-scrollbar-rail-thumb {
 		// transition: all 0.2s ease-in-out;
 		position: absolute;
 		// top:$thumbPosition;
@@ -95,7 +95,7 @@ html.csb-scrollbar-active::-webkit-scrollbar {
 	}
 }
 
-.csb-scrollbar-dynamic-height {
+.casb-scrollbar-dynamic-height {
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -105,7 +105,7 @@ html.csb-scrollbar-active::-webkit-scrollbar {
 	z-index: 99999;
 }
 
-.csb-scrollbar-floating {
+.casb-scrollbar-floating {
 	padding: 8px;
 	background-color: $floatingBgColor;
 	color: $floatingTextColor;
@@ -118,7 +118,7 @@ html.csb-scrollbar-active::-webkit-scrollbar {
 }
 
 @media (prefers-reduced-motion:no-preference) {
-    html.csb-advanced-scrollbar {
+    html.casb-advanced-scrollbar {
         scroll-behavior: unset !important;
 				body{
 					scroll-behavior: unset !important;

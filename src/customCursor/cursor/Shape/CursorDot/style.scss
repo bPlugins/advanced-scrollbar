@@ -1,8 +1,8 @@
-$bgColor: var(--advScrollbar-cursor-dot-cursor-bg, #3B82F6);
-$size: var(--advScrollbar-cursor-dot-cursor-size, 12px);
+$bgColor: var(--casbScrollbar-cursor-dot-cursor-bg, #3B82F6);
+$size: var(--casbScrollbar-cursor-dot-cursor-size, 12px);
 
 
-.advScrollbar-cursor-dotCursor {
+.casbScrollbar-cursor-dotCursor {
     position: fixed;
     top: 0;
     left: 0;

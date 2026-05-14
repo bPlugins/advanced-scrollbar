@@ -2,7 +2,7 @@ import { TabPanel} from "@wordpress/components";
 import ClickEffectStyles from "./ClickEffectStyles";
 import ClickEffectOptions from "./ClickEffectOptions";
 
-const CursorEffect = ({ csbAvScrData, setCsbAvScrData, isPremium, setIsProModalOpen }) => {
+const CursorEffect = ({ casbAvScrData, setCasbAvScrData}) => {
 
   return (
     <>
@@ -12,8 +12,8 @@ const CursorEffect = ({ csbAvScrData, setCsbAvScrData, isPremium, setIsProModalO
       ]}
       >
         {tab => <>
-          {tab.name == 'effect' && <ClickEffectOptions {...{ isPremium, setIsProModalOpen }} value={csbAvScrData?.effect || {}} onChange={value => setCsbAvScrData({ ...csbAvScrData, effect: value })} />}
-          {tab.name == 'style' && <ClickEffectStyles value={csbAvScrData?.effect || {}} onChange={value => setCsbAvScrData({ ...csbAvScrData, effect: value })} />}
+          {tab.name == 'effect' && <ClickEffectOptions value={casbAvScrData?.effect || {}} onChange={value => setCasbAvScrData({ ...casbAvScrData, effect: value })} />}
+          {tab.name == 'style' && <ClickEffectStyles value={casbAvScrData?.effect || {}} onChange={value => setCasbAvScrData({ ...casbAvScrData, effect: value })} />}
         </>}
       </TabPanel>
     </>

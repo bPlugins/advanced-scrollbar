@@ -3,11 +3,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if( !class_exists('CSBAdmin') ){
-    class CSBAdmin{
+if( !class_exists('CASBAdmin') ){
+    class CASBAdmin{
         function __construct(){
 			add_action( 'admin_menu', [$this, 'adminMenu'] );
-            add_filter( 'plugin_action_links_' . CSB_PLUGIN_BASENAME, [$this, 'adv_scrollbar_add_custom_action_links'] );
+            add_filter( 'plugin_action_links_' . CASB_PLUGIN_BASENAME, [$this, 'casb_scrollbar_add_custom_action_links'] );
+            add_action( 'wp_ajax_casbSaveUninstallOption', [$this, 'casb_save_uninstall_option'] );
 		}
 	
 		function adminMenu() {
@@ -23,22 +24,47 @@ if( !class_exists('CSBAdmin') ){
 		}
 
 		function dashboardPage(){ ?>
-			<div id='csbScrollbarDashboard' data-info=<?php echo esc_attr( wp_json_encode([
-                'version' => CSB_VERSION,
-                "dirUrl" => CSB_DIR_URL,
-                "nonce" => wp_create_nonce("adv_scrollbar_nc"),
-                "ajaxUrl" => admin_url('admin-ajax.php')
+			<div id='casbScrollbarDashboard' data-info=<?php echo esc_attr( wp_json_encode([
+                'version' => CASB_VERSION,
+                "dirUrl" => CASB_DIR_URL,
+                "nonce" => wp_create_nonce("casb_scrollbar_nc"),
+                "ajaxUrl" => admin_url('admin-ajax.php'),
+                "deleteDataOnUninstall" => (bool) get_option( 'casb_delete_data_on_uninstall', false ),
+                "uninstallNonce" => wp_create_nonce( 'casb_uninstall_nc' ),
 				]) ); ?>></div>
 			<?php   
         }
 
-        function adv_scrollbar_add_custom_action_links($links){
-            $settings_link = '<a href="' . admin_url( 'admin.php?page=advanced-scrollbar/#settings' ) . '">' . __( 'Settings', 'advanced-scrollbar' ) . '</a>';
+        function casb_scrollbar_add_custom_action_links($links){
+            $settings_link = '<a href="' . admin_url( 'admin.php?page=advanced-scrollbar/#scrollbar-settings' ) . '">' . __( 'Settings', 'advanced-scrollbar' ) . '</a>';
             array_unshift( $links, $settings_link );
             return $links;
         }
 
+        /**
+         * AJAX handler to save the "Delete Data on Uninstall" preference.
+         */
+        function casb_save_uninstall_option() {
+            if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'casb_uninstall_nc' ) ) {
+                wp_send_json_error( 'Invalid request' );
+            }
+
+            if ( ! current_user_can( 'manage_options' ) ) {
+                wp_send_json_error( 'Unauthorized' );
+            }
+
+            $enabled = isset( $_POST['enabled'] ) && sanitize_text_field( wp_unslash( $_POST['enabled'] ) ) === 'true';
+
+            update_option( 'casb_delete_data_on_uninstall', $enabled );
+
+            wp_send_json_success( [
+                'enabled' => $enabled,
+                'message' => $enabled
+                    ? __( 'Data will be deleted when the plugin is uninstalled.', 'advanced-scrollbar' )
+                    : __( 'Data will be preserved when the plugin is uninstalled.', 'advanced-scrollbar' ),
+            ] );
+        }
 
     }
-    new CSBAdmin;
+    new CASBAdmin;
 }

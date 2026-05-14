@@ -17,9 +17,7 @@ module.exports = {
 	globals: {
 		wp: 'readonly',
 		jQuery: 'readonly',
-		csbIsPremium: 'readonly',
-		csbAdvScrollbarCursorConfig: 'writable',
-		isCsbScrollbarChecker: 'readonly',
+		casbAdvScrollbarCursorConfig: 'writable',
 	},
 	parserOptions: {
 		ecmaFeatures: {

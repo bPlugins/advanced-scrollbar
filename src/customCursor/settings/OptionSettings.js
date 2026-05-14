@@ -5,7 +5,7 @@ import CursorEffects from './options/CursorEffects';
 import { __ } from '@wordpress/i18n';
 
 const OptionSettings = (props) => {
-  const { csbAvScrData, setCsbAvScrData} = props;
+  const { casbAvScrData, setCasbAvScrData} = props;
 
   return (
     <>
@@ -15,12 +15,12 @@ const OptionSettings = (props) => {
             {tab.name == "shape" &&
               <>
               
-              <SelectControl className="mt10" label={__("Select Cursor Source", "advanced-scrollbar")} labelPosition="edge" options={cursorSourceOptions} value={csbAvScrData?.source} onChange={value => setCsbAvScrData({ ...csbAvScrData, source: value })} />
+              <SelectControl className="mt10" label={__("Select Cursor Source", "advanced-scrollbar")} labelPosition="edge" options={cursorSourceOptions} value={casbAvScrData?.source} onChange={value => setCasbAvScrData({ ...casbAvScrData, source: value })} />
               
-              {csbAvScrData?.source === "shape" && <General {...{ csbAvScrData, setCsbAvScrData }} />}
+              {casbAvScrData?.source === "shape" && <General {...{ casbAvScrData, setCasbAvScrData }} />}
               </>
             }
-            {tab.name == "effect" && <CursorEffects value={csbAvScrData?.effect || {}} onChange={(val) => setCsbAvScrData({ ...csbAvScrData, effect: val })} /> }
+            {tab.name == "effect" && <CursorEffects value={casbAvScrData?.effect || {}} onChange={(val) => setCasbAvScrData({ ...casbAvScrData, effect: val })} /> }
           </>
         }
       </TabPanel>

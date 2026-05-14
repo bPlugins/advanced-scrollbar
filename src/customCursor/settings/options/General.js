@@ -6,8 +6,8 @@ import ShapeStyleOptions from '../style/ShapeStyleOptions';
 import CursorShape from './CursorShape';
 
 const General = (props) => {
-  const { csbAvScrData, setCsbAvScrData } = props;
-  const { enableCursor = true } = csbAvScrData || {};
+  const { casbAvScrData, setCasbAvScrData } = props;
+  const { enableCursor = true } = casbAvScrData || {};
   return (
     <TabPanel className='bPlTabPanel mini mt10' activeClass='activeTab' tabs={cursorShapeTabs} onSelect={tabController}
     // initialTabName='effect'
@@ -15,10 +15,10 @@ const General = (props) => {
       {
         (tab) => <>
           {tab.name == "shape" && <>
-            <ToggleControl className="mt10" defaultValue={true} label={__("Enable Default Cursor", "advanced-scrollbar")} checked={enableCursor} onChange={value => setCsbAvScrData({ ...csbAvScrData, enableCursor: value })} />
-            <CursorShape value={csbAvScrData?.shape || {}} onChange={(val) => setCsbAvScrData({ ...csbAvScrData, shape: val })}/>
+            <ToggleControl className="mt10" defaultValue={true} label={__("Enable Default Cursor", "advanced-scrollbar")} checked={enableCursor} onChange={value => setCasbAvScrData({ ...casbAvScrData, enableCursor: value })} />
+            <CursorShape value={casbAvScrData?.shape || {}} onChange={(val) => setCasbAvScrData({ ...casbAvScrData, shape: val })}/>
           </>}
-          {tab.name == "style" && <ShapeStyleOptions value={csbAvScrData?.shape || {}} onChange={(val) => setCsbAvScrData({ ...csbAvScrData, shape: val })} />}
+          {tab.name == "style" && <ShapeStyleOptions value={casbAvScrData?.shape || {}} onChange={(val) => setCasbAvScrData({ ...casbAvScrData, shape: val })} />}
         </>
       }
     </TabPanel>

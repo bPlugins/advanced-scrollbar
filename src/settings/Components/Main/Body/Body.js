@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { checkDependency } from '../../../utils/functions';
 import { AiFillQuestionCircle } from '../../../utils/icons';
-import ProModal from '../ProModal/ProModal';
 import FieldSwitch from './FieldSwitch';
 
 const Body = (props) => {
-  const { options, data, sections, activeSection, activeChild, updateData, setData, isLoading, refetch, dbData, isPremium } = props;
+  const { options, data, sections, activeSection, activeChild, updateData, setData, isLoading, refetch, dbData } = props;
 
   const item = useMemo(() => {
     const section = sections.find(s => s.name === activeSection);
@@ -19,17 +18,16 @@ const Body = (props) => {
 
   return <>
     {description && <p className='description' dangerouslySetInnerHTML={{ __html: description }} />}
-    {!isPremium && <ProModal />}
     <div className='fields'>
       {fields.map((field, i) => checkDependency(field?.dependency, data, fields) ?
-        <Field key={`${activeSection}-${activeChild}-${field.id || i}`} {...{ saveType: options.saveType, data, setData, dbData, activeSection, activeChild, field, updateData, fields, isLoading, refetch, isPremium }} /> : null)}
+        <Field key={`${activeSection}-${activeChild}-${field.id || i}`} {...{ saveType: options.saveType, data, setData, dbData, activeSection, activeChild, field, updateData, fields, isLoading, refetch }} /> : null)}
     </div>
   </>;
 };
 
-const Field = ({ saveType = 'nested', data, setData, activeSection, activeChild, field, updateData, isLoading, refetch, dbData, isPremium }) => {
+const Field = ({ saveType = 'nested', data, setData, activeSection, activeChild, field, updateData, isLoading, refetch, dbData }) => {
   // eslint-disable-next-line no-unused-vars
-  const { id, title, default: defaultValue = {}, subtitle, before, after, field: fieldProps, help, desc = "", isPremium: isPro, hints = '' } = field;
+  const { id, title, default: defaultValue = {}, subtitle, before, after, field: fieldProps, help, desc = "", hints = '' } = field;
 
   const [value, setValue] = useState();
   const [dbValue, setDbValue] = useState();
@@ -69,50 +67,9 @@ const Field = ({ saveType = 'nested', data, setData, activeSection, activeChild,
     return `fieldLabel ${baseClass}`;
   }, [fieldProps]);
 
-  // <label for="csb-advancedScrollbarSettings-pro-modal-toggle" class="bPl-settings-pro-open-modal-btn">Open Modal</label>
 
   return <>
-    {(isPro && !isPremium) && <label {...((isPro && !isPremium) ? { htmlFor: "csb-advancedScrollbarSettings-pro-modal-toggle" } : {})}>
-      <div className={`${fieldClasses} ${(isPro && !isPremium) ? 'pointerEventNone bplSettingsProOpacity' : ''}`}>
-        {title && (
-          <div className={labelClasses}>
-            <label className='label'>
-              {title} {isPro && !isPremium && <span className='bPl-Settings-pro-badge'>Pro</span>}
-            </label>
-            {subtitle && <p className='subTitle' dangerouslySetInnerHTML={{ __html: subtitle }} />}
-          </div>
-        )}
-
-        <div className={`fieldComponent ${!title ? "fullWidth" : ""}`}>
-          {before && <div className="beforeAfterText" dangerouslySetInnerHTML={{ __html: before }} />}
-          <FieldSwitch
-            {...field}
-            extraFields={field}
-            value={value}
-            data={data}
-            setData={setData}
-            onChange={handleChange}
-            isLoading={isLoading}
-            refetch={refetch}
-            dbData={dbValue}
-          />
-          {desc && <div className="beforeAfterText" dangerouslySetInnerHTML={{ __html: desc }} />}
-          {after && <div className="beforeAfterText" dangerouslySetInnerHTML={{ __html: after }} />}
-        </div>
-
-        {help && (
-          <div className='bPl-field-help-main-wrapper'>
-            <span className='bPl-field-help-text'>{help}</span>
-            <AiFillQuestionCircle className="bPl-field-help-icon" />
-          </div>
-        )}
-      </div>
-      {
-        hints && <p className='bPl-settings-hints' dangerouslySetInnerHTML={{ __html: hints }}></p>
-      }
-    </label>}
-
-    {!(isPro && !isPremium) && <div className={`${fieldClasses}`}>
+     <div className={`${fieldClasses}`}>
       {title && (
         <div className={labelClasses}>
           <label className='label'>
@@ -148,9 +105,7 @@ const Field = ({ saveType = 'nested', data, setData, activeSection, activeChild,
       {
         hints && <p className='bPl-settings-hints' dangerouslySetInnerHTML={{ __html: hints }}></p>
       }
-    </div>}
-
-
+    </div>
   </>
 };
 

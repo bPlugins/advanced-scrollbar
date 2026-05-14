@@ -1,3 +1,3 @@
-export const prefix = 'advScrollbar-cursor';
+export const prefix = 'casbScrollbar-cursor';
 
-export const cursorClass = 'advScrollbar-custom-cursor';
+export const cursorClass = 'casbScrollbar-custom-cursor';

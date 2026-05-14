@@ -1,0 +1,17 @@
+{
+    "name": "muradwahid/advanced-scrollbar",
+    "autoload": {
+        "psr-4": {
+            "Muradwahid\\AdvancedScrollbar\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "muradwahid",
+            "email": "murad.bplugins@gmail.com"
+        }
+    ],
+    "require": {
+        "freemius/wordpress-sdk": "^2.13"
+    }
+}

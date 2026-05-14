@@ -4,15 +4,12 @@ import { useWPAjax } from "../../../../../../bpl-tools/hooks";
 
 import CursorEffects from '../../../../customCursor/cursor/Effects/CursorEffects';
 import Cursor from '../../../../customCursor/cursor/Shape/Cursor';
-// import CursorRibbon from '../../../../customCursor/cursor/Shape/CursorRibbon/CursorRibbon';
 import useCursorVisibility from "../../../../customCursor/hooks/useCursorVisibility";
 import Card from './Card';
 import { cardOptions } from './options';
 import { isSet } from '../../../../customCursor/utils/common';
-import { pricingPage } from '../../../utils/data';
-// import CursorEffects from '../../../../src/settings/options/CursorEffects';
 const Playground = ({ nonce }) => {
-  const { data, isLoading } = useWPAjax('csb_get_adv_scrollbar_cursor_data_settings', { nonce }); //authorize
+  const { data, isLoading } = useWPAjax('casb_get_adv_scrollbar_cursor_data_settings', { nonce }); //authorize
   const [cursorData, setCursorData] = useState(null);
   const isCursorVisible = useCursorVisibility();
   const dashboardRef = useRef(null);
@@ -25,10 +22,10 @@ const Playground = ({ nonce }) => {
     };
 
 
-    window.addEventListener('csbAdvScrollbarCursorSettings', dataFetched);
+    window.addEventListener('casbAdvScrollbarCursorSettings', dataFetched);
 
     return () => {
-      window.removeEventListener('csbAdvScrollbarCursorSettings', dataFetched);
+      window.removeEventListener('casbAdvScrollbarCursorSettings', dataFetched);
     };
 
   }, []);
@@ -57,7 +54,6 @@ const Playground = ({ nonce }) => {
 
           <div className='custom-cursor-playground-contents-button-wrapper'>
             <a href={`https://scrollbar.bplugins.com/`} target='_blank' rel="noreferrer" className='bPlDashboardPrimaryBtn'>See Demo</a>
-            <a href={pricingPage} target='_blank' rel="noreferrer" className='bPlDashboardSecondBtn'>Buy Now</a>
           </div>
         </div>
 
